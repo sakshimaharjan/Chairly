@@ -1,0 +1,42 @@
+[
+  {
+      "image": "/images/chair1.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair2.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair3.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair4.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair5.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair6.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair7.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  },
+  {
+      "image": "/images/chair8.jpg",
+      "name": "Chair",
+      "price": "Rs 100"
+  }
+]
