@@ -124,13 +124,13 @@ ul li a:hover, .icons i:hover {
 .products .container .text h3{
     font-family: "Poppins";
     font-size: 24px;
-    margin-left: 50px;
+    margin-left: 65px;
 }
 .products .container .text a{
     font-family: "Poppins";
     margin-left: auto;
     padding-top: 10px;
-    padding-right: 30px;
+    padding-right: 70px;
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
@@ -180,6 +180,9 @@ ul li a:hover, .icons i:hover {
 .product-item .price-cart i {
     color: #000;
     font-size: 22px;
+}
+.product-item .price-cart i:hover {
+    color: #333;
 }
 
 
