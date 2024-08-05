@@ -113,9 +113,9 @@ ul li a:hover, .icons i:hover {
     height: 50px;
     width: 50px;
 }
-
-.products .container {
-    padding: 10px 0;
+.products{
+    height: 800px;
+    padding: 20px 0;
     background-color: #AFB8C1;
 }
 .products .container .text{
@@ -144,22 +144,42 @@ ul li a:hover, .icons i:hover {
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 20px;
-    /* padding: 50px 50x; */
+    padding: 10px 50px;
 }
 
 .product-item {
-    width: 25%;
+    width: 250px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    background-color: #fff;
 }
 
 .product-item img {
-    width: 300px;
-    height: 320px;
+    width: 250px;
+    height: 270px;
     display: flex;
-    margin-left: 50px;
+    border-radius: 10px 10px 0 0;
 }
-.product-item p{
-    margin-left: 50px;
+.product-item .text{
+    font-family: "Poppins",sans-serif;
+    font-size: 15px;
+    margin-left: 10px;
+}
+.product-item .price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.product-item .price-cart p {
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+}
+
+.product-item .price-cart i {
+    color: #000;
+    font-size: 22px;
 }
 
 
@@ -201,6 +221,7 @@ footer .social i{
     font-size: 24px; 
     margin: 20px 10px; 
     transition: transform 0.3s; 
+    color: #000;
 }
 
 footer .footer-section p,
