@@ -5,6 +5,9 @@
 }
 body {
     font-family: "Poppins", sans-serif;
+}
+.body{
+    height: 780px;
     background-image: url('images/homepage.jpg');
     background-size: 1520px 780px;
     background-position: center 1px;
@@ -18,7 +21,6 @@ body {
     padding: 10px 20px;
     margin-top: 10px;
     width: 100%;
-    padding: 20px;
 }
 
 h1 {
@@ -86,13 +88,10 @@ ul li a:hover, .icons i:hover {
 }
 .section{
     background-color: #B3BCC5;
-    margin: 200px 0 0 0 ;
     height: 220px;
 }
 .section .features{  
     transform: translateY(20px);
-    margin-top: 200px;
-    margin-bottom: 20px;
     margin-left: 55px;
     display: flex;
     justify-content: center;
@@ -114,7 +113,7 @@ ul li a:hover, .icons i:hover {
     width: 50px;
 }
 .products{
-    height: 800px;
+    height: 840px;
     padding: 20px 0;
     background-color: #AFB8C1;
 }
@@ -164,12 +163,15 @@ ul li a:hover, .icons i:hover {
     font-family: "Poppins",sans-serif;
     font-size: 15px;
     margin-left: 10px;
+    margin-top: 5px;
+    padding: 5px;
 }
 .product-item .price-cart {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 10px;
+    padding: 5px;
 }
 
 .product-item .price-cart p {
@@ -190,7 +192,7 @@ footer {
     font-family: "Poppins",sans-serif;
     background-color: #F5F5F5; 
     color: #000; 
-    padding: 40px 0; 
+    padding: 40px; 
     text-align: left; 
 }
 
