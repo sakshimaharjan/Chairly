@@ -3,16 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products Catalog</title>
-    <link rel="stylesheet" href="products.css">
+    <title>Chairly</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaini+Purva&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
-    <header>
-        <h1>Our Products</h1>
-    </header>
-    <main id="products-container">
-        <!-- Products will be dynamically inserted here -->
-    </main>
-    <script src="products.js"></script>
-</body>
-</html>
+<body style="background-color: #B3BCC5;">
+    <div class="body">
+        <div class="header">
+            <a href="/"><h1>Chairly</h1></a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href=""><i class="fa-solid fa-user"></i></a>
+                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>       
+        </div>
+    <h1>Our Products</h1>
+    <div id="products-list">
+      <!-- Products will be loaded here dynamically -->
+    </div>
+  
+    <script>
+      fetch('/products')
+        .then(response => response.json())
+        .then(data => {
+          const productsList = document.getElementById('products-list');
+          for (let id in data) {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+  
+            productDiv.innerHTML = `
+              <h2>${data[id].name}</h2>
+              <p>Price: $${data[id].price}</p>
+              <p>${data[id].description}</p>
+              <img src="${data[id].imageUrl}" alt="${data[id].name}" width="100">
+            `;
+  
+            productsList.appendChild(productDiv);
+          }
+        });
+    </script>
+        
+        <footer>
+            <div class="container">
+                <div class="footer-section">
+                    <h3>Chairly</h3>
+                    <p>Discover the perfect blend of style and comfort.</p>
+                    <div class="social">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 id="wraps">Category</h4>
+                    <ul>
+                        <li><a href="#">Sofa</a></li>
+                        <li><a href="#">Armchair</a></li>
+                        <li><a href="#">Wing Chair</a></li>
+                        <li><a href="#">Desk Chair</a></li>
+                        <li><a href="#">Wooden Chair</a></li>
+                        <li><a href="#">Park Bench</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 id="wraps">Support</h4>
+                    <ul>
+                        <li><a href="#">Help & Support</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <p>Don't miss out on new products & deals! Subscribe now.</p>
+                </div>
+            </div>
+            <div class="container">
+                <p>&copy; 2024 - Designed & Developed by Chairly</p>
+            </div>
+        </footer>
+    </body>
+    </html>
