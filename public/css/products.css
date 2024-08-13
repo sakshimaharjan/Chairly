@@ -1,58 +1,29 @@
-/* Base styles */
-
-
-h1 {
-    text-align: center;
-    margin: 20px 0;
+/* 
+h1, h2 {
+    color: #333;
 }
 
-#products-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
+input, textarea, button {
+    display: block;
+    margin: 10px 0;
 }
 
-.product {
-    background-color: #f9f9f9;
+#products-container div, #user-list div {
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 20px;
-    width: calc(33.333% - 40px); /* 3 columns layout */
-    box-sizing: border-box;
-    transition: transform 0.2s;
+    padding: 10px;
+    margin: 10px 0;
 }
 
-.product:hover {
-    transform: scale(1.05);
-}
-
-.product h2 {
-    font-size: 1.5em;
-    margin: 0 0 10px;
-}
-
-.product p {
-    margin: 5px 0;
-}
-
-.product img {
+img {
     max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
-/* Responsive styles */
-@media (max-width: 1200px) {
-    .product {
-        width: calc(50% - 40px); /* 2 columns layout */
-    }
 }
 
 @media (max-width: 768px) {
-    .product {
-        width: calc(100% - 40px); /* 1 column layout */
+    #products-container div, #user-list div {
+        font-size: 14px;
     }
-}
+
+    img {
+        width: 100px;
+    }
+} */
