@@ -159,6 +159,7 @@ ul li a:hover, .icons i:hover {
     border-radius: 10px;
     margin-bottom: 20px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .product-item img {
