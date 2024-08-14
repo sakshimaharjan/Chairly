@@ -31,10 +31,30 @@
             </div>       
         </div>
         <h1>Our Products</h1>
-        <section id="product-section">
-            <ul id="product-list"></ul>
-        </section>
-        <script src="js/main.js"></script>
+        <div id="products-list">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+
+        <script>
+            fetch('/products')
+            .then(response => response.json())
+            .then(data => {
+                const productsList = document.getElementById('products-list');
+                for (let id in data) {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+
+                productDiv.innerHTML = `
+                    <h2>${data[id].name}</h2>
+                    <p>Price: $${data[id].price}</p>
+                    <p>${data[id].description}</p>
+                    <img src="${data[id].imageUrl}" alt="${data[id].name}" width="100">
+                `;
+
+                productsList.appendChild(productDiv);
+                }
+            });
+        </script>
         
         <footer>
             <div class="container">
