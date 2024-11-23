@@ -110,6 +110,83 @@ app.get('/api/products/:id', (req, res) => {
   });
 });
 
+// Serve the create account page
+app.get('/create-account', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'createAccount.html'));
+});
+
+// Login functionality
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+  const usersRef = db.ref('users');
+  usersRef.orderByChild('email').equalTo(email).once('value', snapshot => {
+      if (snapshot.exists()) {
+          const user = snapshot.val();
+          const userId = Object.keys(user)[0];
+          if (user[userId].password === password) {
+              res.status(200).send('Login successful');
+          } else {
+              res.status(400).send('Invalid password');
+          }
+      } else {
+          res.status(400).send('User not found');
+      }
+  });
+});
+
+// Create account functionality
+app.post('/api/create-account', (req, res) => {
+  const { name, email, password } = req.body;
+  const usersRef = db.ref('users');
+  const newUserRef = usersRef.push();
+  
+  newUserRef.set({
+      name: name,
+      email: email,
+      password: password
+  }, (error) => {
+      if (error) {
+          res.status(500).send('Error creating account');
+      } else {
+          res.status(200).send('Account created successfully');
+      }
+  });
+});
+
+// Fetch users functionality
+app.get('/api/get-users', (req, res) => {
+  const usersRef = db.ref('users');
+  usersRef.once('value', snapshot => {
+      if (snapshot.exists()) {
+          const users = snapshot.val();
+          const userArray = [];
+          for (let id in users) {
+              userArray.push({
+                  id: id,
+                  name: users[id].name,
+                  email: users[id].email
+              });
+          }
+          res.json(userArray);
+      } else {
+          res.status(404).send('No users found');
+      }
+  });
+});
+
+// Delete user functionality
+app.delete('/api/delete-user/:id', (req, res) => {
+  const userId = req.params.id;
+  const userRef = db.ref('users').child(userId);
+  
+  userRef.remove()
+      .then(() => res.json({ status: 'success' }))
+      .catch(error => {
+          console.error('Error deleting user:', error);
+          res.status(500).json({ status: 'error', message: error.message });
+      });
+});
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
