@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Checkout</title>
+   <link rel="stylesheet" href="css/style.css">
+   <style>
+       /* Checkout Page Styling */
+       body {
+           font-family: Arial, sans-serif;
+           padding: 20px;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       h1 {
+           margin-bottom: 20px;
+       }
+       form {
+           width: 100%;
+           max-width: 500px;
+           display: flex;
+           flex-direction: column;
+           gap: 15px;
+       }
+       input[type="text"], input[type="email"], input[type="tel"], textarea {
+           padding: 10px;
+           font-size: 16px;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+       }
+       button {
+           padding: 10px;
+           background-color: #28a745;
+           color: white;
+           font-size: 16px;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+       }
+       .total-summary {
+           margin-top: 20px;
+           text-align: center;
+       }
+       .total-summary p {
+           font-size: 18px;
+       }
+   </style>
+</head>
+<body>
+   <h1>Shipping Details</h1>
+   <form id="shipping-form">
+       <label for="name">Full Name</label>
+       <input type="text" id="name" name="name" required>
+
+       <label for="address">Address</label>
+       <textarea id="address" name="address" rows="4" required></textarea>
+
+       <label for="phone">Phone Number</label>
+       <input type="tel" id="phone" name="phone" required>
+
+       <label for="email">Email</label>
+       <input type="email" id="email" name="email" required>
+
+       <button type="submit">Submit</button>
+   </form>
+
+   <!-- Display Total Summary -->
+   <div class="total-summary">
+       <p><strong>Grand Total: $<span id="total"></span></strong></p>
+       <p>Shipping charges: $<span id="shipping-charge"></span></p>
+   </div>
+
+   <script>
+       // Get total and shipping charges from URL parameters
+       const urlParams = new URLSearchParams(window.location.search);
+       const total = urlParams.get('total');
+       const shippingCharge = urlParams.get('shipping');
+
+       // Display the total and shipping charge
+       document.getElementById('total').innerText = total;
+       document.getElementById('shipping-charge').innerText = shippingCharge;
+
+       // Handle form submission
+       document.getElementById('shipping-form').addEventListener('submit', function(e) {
+           e.preventDefault();
+
+           const name = document.getElementById('name').value;
+           const address = document.getElementById('address').value;
+           const phone = document.getElementById('phone').value;
+           const email = document.getElementById('email').value;
+
+           // You can process the form data here (e.g., send it to a server or save it locally)
+           alert('Thank you for your order, ' + name + '!\nYour order will be shipped to ' + address);
+           
+           // Redirect to a confirmation page (or clear the cart)
+           localStorage.removeItem('cart'); // Clear the cart after checkout
+           window.location.href = '/confirmation.html'; // Redirect to confirmation page
+       });
+   </script>
+</body>
+</html>

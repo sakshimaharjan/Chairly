@@ -95,6 +95,21 @@ app.post('/api/delete-product', (req, res) => {
   });
 });
 
+// Fetch a single product by ID
+app.get('/api/products/:id', (req, res) => {
+  const productId = req.params.id;
+  const productRef = db.ref(`products/${productId}`);
+  
+  productRef.once('value', (snapshot) => {
+      const product = snapshot.val();
+      if (product) {
+          res.json(product);
+      } else {
+          res.status(404).send('Product not found');
+      }
+  });
+});
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
