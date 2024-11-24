@@ -6,7 +6,6 @@
    <title>Your Cart</title>
    <link rel="stylesheet" href="css/style.css">
    <style>
-       /* Cart Page Styling */
        body {
            font-family: Arial, sans-serif;
            padding: 20px;
@@ -94,21 +93,20 @@
 <body>
    <h1>Your Cart</h1>
    <div id="cart-items"></div>
-   
-   <!-- Grand Total Section -->
+
    <div class="total-section">
-       <p><strong>Grand Total: $<span id="grand-total">0.00</span></strong></p>
+       <p><strong>Grand Total: Rs <span id="grand-total">0.00</span></strong></p>
        <p>Shipping charges are applied.</p>
    </div>
 
    <button class="checkout-btn" onclick="checkout()">Checkout</button>
 
    <script>
-       // Load cart from localStorage and display items
+       
        function loadCart() {
            const cart = JSON.parse(localStorage.getItem('cart')) || [];
            const cartItemsContainer = document.getElementById('cart-items');
-           cartItemsContainer.innerHTML = ''; // Clear previous items
+           cartItemsContainer.innerHTML = ''; 
 
            if (cart.length === 0) {
                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
@@ -125,24 +123,24 @@
                    <img src="${item.imageUrl}" alt="${item.name}">
                    <div class="item-info">
                        <h2>${item.name}</h2>
-                       <p>Price: $${item.price}</p>
+                       <p>Price: Rs ${item.price}</p>
                        <div class="item-quantity">
                            <button onclick="updateQuantity('${item.id}', -1)">-</button>
                            <input type="text" value="${item.quantity}" readonly>
                            <button onclick="updateQuantity('${item.id}', 1)">+</button>
                        </div>
-                       <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
+                       <p>Total: Rs ${(item.price * item.quantity).toFixed(2)}</p>
                    </div>
                    <button class="delete-button" onclick="deleteItem('${item.id}')">Delete</button>
                `;
                cartItemsContainer.appendChild(itemDiv);
 
-               // Add the item total to the grand total
+               
                total += item.price * item.quantity;
            });
 
-           // Update grand total
-           const shippingCharge = 5.00; // Example shipping charge
+         
+           const shippingCharge = 5.00; 
            const grandTotal = total + shippingCharge;
            document.getElementById('grand-total').innerText = grandTotal.toFixed(2);
        }
@@ -153,18 +151,18 @@
            const product = cart.find(item => item.id === id);
 
            if (product) {
-               product.quantity = Math.max(1, product.quantity + change); // Ensure quantity stays >= 1
+               product.quantity = Math.max(1, product.quantity + change);
                localStorage.setItem('cart', JSON.stringify(cart));
-               loadCart(); // Reload the cart to show updated quantity
+               loadCart(); 
            }
        }
 
        // Delete item from the cart
        function deleteItem(id) {
            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-           cart = cart.filter(item => item.id !== id); // Remove item by filtering it out
+           cart = cart.filter(item => item.id !== id); 
            localStorage.setItem('cart', JSON.stringify(cart));
-           loadCart(); // Reload the cart to update the display
+           loadCart(); 
        }
 
        // Checkout function
@@ -172,16 +170,14 @@
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         if (cart.length > 0) {
             const grandTotal = document.getElementById('grand-total').innerText;
-            const shippingCharge = 5.00; // This can be a dynamic value if needed
+            const shippingCharge = 5.00; 
             
-            // Redirect to checkout page and pass the total as a URL parameter
             window.location.href = `/checkout.html?total=${grandTotal}&shipping=${shippingCharge}`;
         } else {
             alert('Your cart is empty.');
         }
         }
         
-       // Load the cart items on page load
        loadCart();
    </script>
 </body>
